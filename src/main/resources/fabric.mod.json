@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "waterandoil",
+	"version": "${version}",
+	"name": "WaterAndOil",
+	"description": "Mixing things that don't mix",
+	"authors": [
+		"v017"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/waterandoil/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.v017.waterandoil.WaterAndOil"
+		],
+		"client": [
+			"net.v017.waterandoil.client.WaterAndOilClient"
+		],
+		"fabric-datagen": [
+			"net.v017.waterandoil.client.WaterAndOilDataGenerator"
+		]
+	},
+	"mixins": [
+		"waterandoil.mixins.json",
+		{
+			"config": "waterandoil.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
