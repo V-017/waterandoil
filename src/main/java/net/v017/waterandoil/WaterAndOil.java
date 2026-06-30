@@ -3,7 +3,9 @@ package net.v017.waterandoil;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.resources.Identifier;
-
+import net.v017.waterandoil.fluid.ModFluids;
+import net.v017.waterandoil.item.ModItems;
+import net.v017.waterandoil.block.ModBlocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +24,9 @@ public class WaterAndOil implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
+		ModItems.initialize();
+		ModBlocks.initialize();
+		ModFluids.initialize();
 	}
 
 	public static Identifier id(String path) {

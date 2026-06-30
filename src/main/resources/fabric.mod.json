@@ -19,7 +19,8 @@
 			"net.v017.waterandoil.WaterAndOil"
 		],
 		"client": [
-			"net.v017.waterandoil.client.WaterAndOilClient"
+			"net.v017.waterandoil.client.WaterAndOilClient",
+			"net.v017.waterandoil.appearance.AppearanceClient"
 		],
 		"fabric-datagen": [
 			"net.v017.waterandoil.client.WaterAndOilDataGenerator"
