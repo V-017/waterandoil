@@ -12,7 +12,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -26,7 +25,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -105,37 +103,16 @@ public abstract class TarFluid extends FlowingFluid {
 		BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
 		Block.dropResources(state, world, pos, blockEntity);
 	}
-    //how fast it spreads
+    //how far it spreads
 	@Override
 	protected int getSlopeFindDistance(LevelReader world) {
-		return 1;
+		return 2;
 	}
     //idk
 	@Override
 	public boolean isSame(Fluid fluid) {
 		return fluid == ModFluids.TAR_STILL || fluid == ModFluids.TAR_FLOWING;
 	}
-    // //stole this from lavafluid
-    // 	private void fizz(final LevelAccessor level, final BlockPos pos) {
-	// 	level.levelEvent(1501, pos, 0);
-	// }
-    // //interaction with other fluids
-	// @Override
-	// protected void spreadTo(final LevelAccessor level, final BlockPos pos, final BlockState state, final Direction direction, final FluidState target) {
-	// 	if (direction == Direction.DOWN) {
-	// 		FluidState fluidState = level.getFluidState(pos);
-	// 		if (this.is(ModFluidTags.TAR) && fluidState.is(FluidTags.LAVA)) {
-	// 			if (state.getBlock() instanceof LiquidBlock) {
-	// 				level.setBlock(pos, Blocks.NETHERRACK.defaultBlockState(), 3);
-	// 			}
-
-	// 			this.fizz(level, pos);
-	// 			return;
-	// 		}
-	// 	}
-
-	// 	super.spreadTo(level, pos, state, direction, target);
-	// }
 
 	@Override
 	protected boolean canConvertToSource(ServerLevel world) {
@@ -155,12 +132,12 @@ public abstract class TarFluid extends FlowingFluid {
 	// #region abstract_fluid
 	@Override
 	public int getDropOff(LevelReader world) {
-		return 1;
+		return 2;
 	}
-
+	//velocità di scorrimento
 	@Override
 	public int getTickDelay(LevelReader world) {
-		return 5;
+		return 30;
 	}
 
 	@Override
