@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -118,10 +119,6 @@ public abstract class TarFluid extends FlowingFluid {
 	protected boolean canConvertToSource(ServerLevel world) {
 		return world.getGameRules().get(GameRules.LAVA_SOURCE_CONVERSION);
 	}
-
-
-
-
 	// #endregion abstract_fluid
 	// #region legacy_block
 	@Override

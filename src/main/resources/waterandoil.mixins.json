@@ -4,7 +4,9 @@
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
 		"ExampleMixin",
-		"LiquidBlockMixin"
+		"LiquidBlockMixin",
+		"FlowingFluidMixin",
+		"FlowingFluidInvoker"
 	],
 	"injectors": {
 		"defaultRequire": 1
