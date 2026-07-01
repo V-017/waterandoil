@@ -1,11 +1,16 @@
 package net.v017.waterandoil;
 
 import net.fabricmc.api.ModInitializer;
-
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.v017.waterandoil.fluid.ModFluids;
 import net.v017.waterandoil.item.ModItems;
 import net.v017.waterandoil.block.ModBlocks;
+import net.v017.waterandoil.feature.ModPlacedFeatures;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +32,14 @@ public class WaterAndOil implements ModInitializer {
 		ModItems.initialize();
 		ModBlocks.initialize();
 		ModFluids.initialize();
+
+			BiomeModifications.addFeature(
+			BiomeSelectors.includeByKey(Biomes.CRIMSON_FOREST, Biomes.WARPED_FOREST, Biomes.NETHER_WASTES),
+			GenerationStep.Decoration.LAKES,
+			ModPlacedFeatures.TAR_POOL_PLACED_KEY
+		);
 	}
+
 
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);

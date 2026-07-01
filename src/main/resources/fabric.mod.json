@@ -23,7 +23,7 @@
 			"net.v017.waterandoil.appearance.AppearanceClient"
 		],
 		"fabric-datagen": [
-			"net.v017.waterandoil.client.WaterAndOilDataGenerator"
+			"net.v017.waterandoil.datagen.WaterAndOilDataGenerator"
 		]
 	},
 	"mixins": [
