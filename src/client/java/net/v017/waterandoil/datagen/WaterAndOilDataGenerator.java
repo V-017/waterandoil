@@ -13,6 +13,7 @@ public class WaterAndOilDataGenerator implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(WaterAndOilWorldgenProvider::new);
+        pack.addProvider(ModRecipeProvider::new);
 	}
     @Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {

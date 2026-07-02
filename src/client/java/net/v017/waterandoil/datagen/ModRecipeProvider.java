@@ -1,0 +1,43 @@
+package net.v017.waterandoil.datagen;
+
+import java.util.concurrent.CompletableFuture;
+
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+
+
+
+public class ModRecipeProvider extends FabricRecipeProvider {
+	public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+		super(output, registriesFuture);
+	}
+
+	@Override
+	protected RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
+		return new RecipeProvider(registryLookup, exporter) {
+			@Override
+			public void buildRecipes() {
+				HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
+
+                    shapeless(RecipeCategory.BUILDING_BLOCKS, Items.CINNABAR) // You can also specify an int to produce more than one
+                .requires(Items.NETHERRACK)
+                .requires(Items.COBBLESTONE) // You can also specify an int to require more than one, or a tag to accept multiple things
+                // Create an advancement that gives you the recipe
+                .unlockedBy(getHasName(Items.NETHERRACK), has(Items.CINNABAR))
+                .save(output);
+			}
+		};
+	}
+
+	@Override
+	public String getName() {
+		return "ModRecipeProvider";
+	}
+}
